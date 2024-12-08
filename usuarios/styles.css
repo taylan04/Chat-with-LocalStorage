@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lacquer&family=Luckiest+Guy&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+@font-face {
+    font-family: sora;
+    src: url(../fontes/Sora-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: spider;
+    src: url(../fontes/The\ Amazing\ Spider-Man.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sora;
+}
+
+body {
+    margin-top: 40px;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(90deg, red, rgb(154, 8, 8), rgb(100, 9, 9));
+    transition: 0.7s;
+}
+
+h1 {
+    color: whitesmoke;
+    position: relative;
+    font-family: spider;
+    bottom: 50px;
+    letter-spacing: 5px;
+}
+
+.perfis {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.perfis .perfil {
+    border: 2px solid whitesmoke;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.325);
+    width: 220px;
+    height: auto;
+    position: relative;
+}
+
+.perfis .perfil:hover {
+    box-shadow: 0 0 15px rgb(255, 85, 85);
+}
+
+.perfis .perfil img {
+    mask-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0));
+    width: 230px;
+}
+
+.perfis .perfil h2 {
+    color: whitesmoke;
+    position: relative;
+    bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.perfis:hover > :not(:hover) {
+    opacity: 4;
+    transform: scale(0.9);
+    filter: blur(3px);
+    transition: 0.4s;
+}
+
+.perfis .perfil h3 {
+   color: whitesmoke;
+   font-size: 70px;
+   padding: 60px;
+}
+
+.criar a {
+    position: relative;
+    top: 100px;
+    text-decoration: none;
+    color: whitesmoke;
+    font-family: spider;
+    letter-spacing: 3px;
+    transition: 0.4s;
+}
+
+.criar a:hover {
+    color: rgb(255, 168, 168);
+}
+
+.perfis .perfil i {
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.558);
+}

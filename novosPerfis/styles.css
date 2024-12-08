@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lacquer&family=Luckiest+Guy&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+@font-face {
+    font-family: sora;
+    src: url(../fontes/Sora-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: spider;
+    src: url(../fontes/The\ Amazing\ Spider-Man.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sora;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    font-family: sora;
+    background-color: whitesmoke;
+    transition: 0.7s;
+    background-image: url(../images/spider-9-4k.jpg);
+}
+
+h1 {
+    color: whitesmoke;
+    font-family: spider;
+    display: flex;
+    text-align: center;
+    font-size: 110px;
+    position: absolute;
+    left: 170px;
+    letter-spacing: 3px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 2px solid rgba(255, 255, 255, .2);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.19);
+    justify-content: center;
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    left: 300px;
+    gap: 20px;
+}
+
+.campo input {
+    padding: 15px;
+    border: none;
+    background: transparent;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.249);
+    color: whitesmoke;
+}
+
+.campo input::placeholder {
+    color: rgba(245, 245, 245, 0.642);
+}
+
+.campo .criar {
+   color: rgb(203, 34, 34);
+   background-color: rgb(236, 236, 236) ;
+   font-weight: 800;
+   letter-spacing: 2px;
+}
+
+.campo p {
+    color: whitesmoke;
+    font-size: 13px;
+    text-align: center;
+}
