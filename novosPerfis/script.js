@@ -11,15 +11,15 @@ function criar() {
 
         if(usuarioExistente) {
             erro.textContent = "Usuário já cadastrado."
-        } else if (nome.value === "" || url.value === "") {
+        } else if (nome.value === "") {
              erro.textContent = "Preencha todos os dados."
         } else {
-            const novoUsuario = new User (id++, nome.value, url.value);
+            const ImagemOuNao = url.value === "" ? null : url.value;
+            const novoUsuario = new User (id++, nome.value, ImagemOuNao);
             perfisExistentes.push(novoUsuario)
             localStorage.setItem("listaDePerfis", JSON.stringify(perfisExistentes));
             nome.value = ""
             url.value = ""
             window.location.href = "../usuarios/index.html"
         }
-     
 }
