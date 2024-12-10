@@ -13,6 +13,7 @@ const fotoDoUsuario = document.getElementById("fotoDoUsuario")
 const letraDoUsuario = document.getElementById("inicialDoUsuario")
 const perfis = JSON.parse(localStorage.getItem("listaDePerfis")) || []
 
+
 function encontrarUsuario() {
     let url = window.location.search
     console.log(url)
@@ -42,6 +43,14 @@ function encontrarUsuario() {
 encontrarUsuario()
 
 const input = document.querySelector("input")
+const chat = document.querySelector(".mensagens")
+
+function finalDaTela() {
+    chat.scrollTo({
+        top: chat.scrollHeight,
+        behavior: 'smooth'
+      });
+  }
 
 function enviandoMensagem() {
     const mensagens = JSON.parse(localStorage.getItem("mensagens")) || []
@@ -65,10 +74,10 @@ function enviandoMensagem() {
 input.addEventListener("keydown", function(event){
      if(event.code === "Enter" || event.code === "NumpadEnter") {
         enviandoMensagem()
+        finalDaTela()
      }
 })
 
-const chat = document.querySelector(".mensagens")
 
 function exibindoMensagens() {
     
