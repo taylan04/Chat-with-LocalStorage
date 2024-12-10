@@ -42,51 +42,75 @@ function encontrarUsuario() {
 encontrarUsuario()
 
 const input = document.querySelector("input")
-const mensagens = JSON.parse(localStorage.getItem("mensagens")) || []
 
-input.addEventListener("keydown", function(event){
+function enviandoMensagem() {
+    const mensagens = JSON.parse(localStorage.getItem("mensagens")) || []
     let url2 = window.location.search
     const params2 = new URLSearchParams(url2)
     const usuario2 = params2.get('id')
     const verificando = perfis.find((perfil) => String(perfil.id) === String(usuario2));
+    
+    let novaMensagem = new Message (
+        verificando.name,
+        verificando.profilePictureUrl,
+        input.value,
+        usuario2
+    )
+    mensagens.push(novaMensagem)
+    localStorage.setItem("mensagens", JSON.stringify(mensagens))
+    exibindoMensagens();
+    input.value = ""
+}
+
+input.addEventListener("keydown", function(event){
      if(event.code === "Enter" || event.code === "NumpadEnter") {
-        let novaMensagem = new Message (
-            verificando.name,
-            verificando.profilePictureUrl,
-            input.value,
-            usuario2
-        )
-        mensagens.push(novaMensagem)
-        localStorage.setItem("mensagens", JSON.stringify(mensagens))
-        input.value = ""
+        enviandoMensagem()
      }
 })
 
-const mensagensSalvas = JSON.parse(localStorage.getItem("mensagens")) || []
 const chat = document.querySelector(".mensagens")
 
-mensagensSalvas.forEach(mensagem => {
-    let url3 = window.location.search
-    const params3 = new URLSearchParams(url3)
-    const usuario3 = params3.get('id')
+function exibindoMensagens() {
+    
+    const mensagensSalvas = JSON.parse(localStorage.getItem("mensagens")) || []
+    chat.innerHTML = "";
 
-    const caixaDaMensagem = document.createElement("div")
-    if (usuario3 === mensagem.authorld) {
-        caixaDaMensagem.innerHTML = `<div class="minhaMensagem">
-                <h4>${mensagem.name}</h4>
-                <img src="${mensagem.photoUser}" alt="perfil" title="perfil">
-                <p>${mensagem.content}</p>
-                <div class="data">${mensagem.createdAt}</div>
-            </div>`
-        chat.appendChild(caixaDaMensagem)
+    mensagensSalvas.forEach(mensagem => {
+        let url3 = window.location.search
+        const params3 = new URLSearchParams(url3)
+        const usuario3 = params3.get('id')
+    
+        const caixaDaMensagem = document.createElement("div")
 
-    } else {
-        caixaDaMensagem.innerHTML = `<div class="mensagem">
-                <h4>${mensagem.name}</h4>
-                <img src="${mensagem.photoUser}" alt="perfil" title="perfil">
-                <p>${mensagem.content}</p>
-                <div class="data">${mensagem.createdAt}</div>
-            </div>`
-        chat.appendChild(caixaDaMensagem)
-    }
-});
+        if (usuario3 === mensagem.authorld) {
+            caixaDaMensagem.innerHTML = `
+                    <h4>${mensagem.name}</h4>
+                    <img src="${mensagem.photoUser}" alt="perfil" title="perfil">
+                    <h2>${mensagem.name.charAt(0).toUpperCase()}</h2>
+                    <p>${mensagem.content}</p>
+                    <div class="data">${new Date(mensagem.createdAt).toLocaleString()}</div>`
+                    caixaDaMensagem.classList.add("minhaMensagem")
+                    chat.appendChild(caixaDaMensagem)
+        } else {
+            caixaDaMensagem.innerHTML = `
+                    <h4>${mensagem.name}</h4>
+                    <img src="${mensagem.photoUser}" alt="perfil" title="perfil">
+                    <h2>${mensagem.name.charAt(0).toUpperCase()}</h2>
+                    <p>${mensagem.content}</p>
+                    <div class="data">${new Date(mensagem.createdAt).toLocaleString()}</div>`
+                    caixaDaMensagem.classList.add("mensagem")
+                    chat.appendChild(caixaDaMensagem)
+        }
+
+        const fotoDaImagem = caixaDaMensagem.querySelector("img")
+        const InicialDaMensagem = caixaDaMensagem.querySelector("h2")
+        if(mensagem.photoUser === null) {
+            fotoDaImagem.style.display = "none"
+            InicialDaMensagem.style.display = "flex"
+        }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", exibindoMensagens)
+
+window.addEventListener("storage", exibindoMensagens)
