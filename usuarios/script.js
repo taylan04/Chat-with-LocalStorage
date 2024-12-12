@@ -24,7 +24,8 @@ function exibirPerfis() {
             h3.style.display = "none"
         }
 
-        i.addEventListener("click", function() {
+        i.addEventListener("click", function(event) {
+            event.stopPropagation()
             const indicePerfil = perfis.findIndex(p => p.id === perfil.id);
             if (indicePerfil !== -1) {
                 perfis.splice(indicePerfil, 1);

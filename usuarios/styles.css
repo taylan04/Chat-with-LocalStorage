@@ -89,9 +89,8 @@ h1 {
 .perfis .perfil h3 {
    color: whitesmoke;
    font-size: 70px;
-   padding: 60px;
    position: absolute;
-   bottom: -10px;
+   bottom: 30px;
 }
 
 .criar a {
