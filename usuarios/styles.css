@@ -28,19 +28,22 @@ body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(90deg, red, rgb(154, 8, 8), rgb(100, 9, 9));
     transition: 0.7s;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 h1 {
+    margin: 0;
     color: whitesmoke;
     position: relative;
     font-family: spider;
-    bottom: 50px;
+    bottom: 21px;
     letter-spacing: 5px;
 }
 
 .perfis {
     display: flex;
-    margin: 0 150px 0 150px;
+    margin: 40px 150px 40px 150px;
     gap: 20px;
     align-items: center;
     justify-content: center;
@@ -95,7 +98,7 @@ h1 {
 
 .criar a {
     position: relative;
-    top: 100px;
+    top: 30px;
     text-decoration: none;
     color: whitesmoke;
     font-family: spider;
